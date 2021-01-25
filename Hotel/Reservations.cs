@@ -34,12 +34,6 @@ namespace HotelProgram
                 BookRoom(room, startDay, finalDay);
                 return true;
             }
-            else if (hotel.rooms.Exists(x => x.occupancies.OrderByDescending(y => y.to).Take(1).FirstOrDefault().to < startDay))
-            {
-                var room = hotel.rooms.Where(x => x.occupancies.OrderByDescending(y => y.to).Take(1).FirstOrDefault().to < startDay).FirstOrDefault();
-                BookRoom(room, startDay, finalDay);
-                return true;
-            }
             else
             {
                 return false;
@@ -71,7 +65,6 @@ namespace HotelProgram
                 from = startDay,
                 to = finalDay
             });
-            Console.WriteLine("Accepted, your room number is " + room.roomNumber);
         }
 
 
